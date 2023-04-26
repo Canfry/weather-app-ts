@@ -1,10 +1,5 @@
 'use client';
 
-import { Inter } from '@next/font/google';
-import SearchBar from './components/SearchBar';
-
-const inter = Inter({ subsets: ['latin'] });
-
 import { useEffect, useState, useCallback } from 'react';
 
 export default function Home() {
