@@ -6,6 +6,7 @@ export default function Home() {
   const [location, setLocation] = useState('');
   const [lon, setLon] = useState(null);
   const [lat, setLat] = useState(null);
+  const [city, setCity] = useState('');
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
     setLocation(e.currentTarget.value);
@@ -22,6 +23,8 @@ export default function Home() {
       if (data) {
         setLon(data[0].lon);
         setLat(data[0].lat);
+        setCity(data[0].name);
+        console.log(city);
         console.log(data[0].lon);
         console.log(data[0].lat);
         // setIsLoading(true);
@@ -50,6 +53,7 @@ export default function Home() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     getCoordinates();
+    setLocation('');
   }
 
   useEffect(() => {
@@ -65,6 +69,7 @@ export default function Home() {
           placeholder='Enter a location'
           onChange={onChange}
           className='text-slate-700 focus:outline-none rounded-md py-1 px-2'
+          value={location}
         />
         <button
           className='ml-4 rounded-md py-2 px-4 bg-slate-700'
@@ -73,7 +78,7 @@ export default function Home() {
           Search
         </button>
       </form>
-      <h1>{location}</h1>
+      <h1>{city}</h1>
       <p>{lon}</p>
       <p>{lat}</p>
     </div>
